@@ -4,9 +4,9 @@ $server = "localhost";
 $username = "loginOTP";
 $password = "123";
 $dbname = "loginOTP";
-$port = "5432";
+$dsn = "pgsql:dbname=$dbname;host=$server";
 
-$koneksi = new PDO("pgsql:dbname=$dbname;host=$server", $username, $password);
+$koneksi = new PDO($dsn, $username, $password);
 
 if (!$koneksi) {
   die("Koneksi gagal");
