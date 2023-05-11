@@ -6,7 +6,7 @@ $sql = 'SELECT * FROM users';
 
 $res = $koneksi->query($sql);
 
-var_dump($res->fetchObject());
+// var_dump($res->fetchObject());
 
 // foreach ($res as $row) {
 //   print $row['user_id'] . " | ";
