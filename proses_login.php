@@ -7,13 +7,13 @@ require 'func_generateOTP.php';
 $otp = $_POST['kode_otp'];
 $email = get_safe_value($koneksi, $_POST['email']);
 
-$sql = "SELECT * FROM users WHERE email = $email";
+$sql = "SELECT * FROM users WHERE email_pengguna = $email";
 $hasil = $koneksi->query($sql)->fetchObject();
 
 if ($otp == $_SESSION['EMAIL_OTP']) {
   unset($_SESSION['EMAIL_OTP']);
-  $_SESSION['email'] = $hasil->email;
-  $_SESSION['name'] = $hasil->name;
+  $_SESSION['email'] = $hasil->email_pengguna;
+  $_SESSION['name'] = $hasil->nama_pengguna;
   header("location: index.php");
 } else {
   echo "gagal";

@@ -14,7 +14,7 @@ $type = get_safe_value($koneksi, $_POST['tipe']);
 
 if ($type == "'email'") {
   $email = get_safe_value($koneksi, $_POST['email']);
-  $sql = "SELECT * FROM users where email = $email";
+  $sql = "SELECT * FROM users where email_pengguna = $email";
   $check_user = $koneksi->query($sql)->rowCount();
 
   // var_dump($check_user->rowCount());
