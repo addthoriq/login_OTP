@@ -1,0 +1,24 @@
+Algoritma untuk hitung mundur
+
+1. Mulai
+2. Mendefinisikan try
+2a. Mendefinisikan variabel $timestamp untuk menyimpan waktu dimulainya melakukan proses request
+2b. $timestamp diisikan dengan $_SERVER["REQUEST_TIME"], yang mana $_SERVER["REQUEST_TIME"] adalah mengembalikan nilai Timestamp pada saat dimulainya melakukan proses request
+2c. Menyimpan $timestamp ke dalam session PHP dengan $_SESSION['time']
+2d. Mengirimkan Email
+3. Mendefinisikan Catch dengan $e dan objek Exception
+3a. Menjalankan function die untuk menghentikan Algoritma
+3b. Menampilkan isi $e untuk melihat pesan error
+4. Selesai
+
+Algoritma Validasi hitungan mundur
+1. Mulai
+2. Mendefinisikan variabel $timestamp dan diisikan dengan $_SERVER["REQUEST_TIME] untuk mendapatkan waktu saat ini dalam bentuk timestamp
+3. Jika $timestamp - $_SESSION['time] > 600 detik (10 menit), maka 
+3a. Menampilkan pesan kode OTP telah kadaluwarsa
+4. Jika negasi dari nomor 3, maka
+4a. Mengecek kevalidan kode OTP, jika benar maka
+4aa. Menjalankan function unset() untuk mengahpus isi $_SESSION['otp'] dan berhasil login 
+4b. Jika negasi dari nomor 4a, maka
+4ba. Menampilkan pesan kode OTP tidak valid
+5. Selesai

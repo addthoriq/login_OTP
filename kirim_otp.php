@@ -26,7 +26,7 @@ if ($type == "'email'") {
 
   $otp = generateOTP();
   $_SESSION['EMAIL_OTP'] = $otp;
-  $html = "Kode OTP anda adalah $otp";
+  $html = "Kode OTP anda adalah <strong>$otp</strong> <br> Kode OTP akan hangus apabila lebih dari 5 menit";
   //Create an instance; passing `true` enables exceptions
   $mail = new PHPMailer(true);
 
@@ -51,7 +51,12 @@ if ($type == "'email'") {
     'verify_peer_name' => false,
     'allow_self_signed' => false
   ));
+
   if ($mail->send()) {
+
+    $timestamp = $_SERVER["REQUEST_TIME"];
+    $_SESSION['time'] = $timestamp;
+
     echo "done";
   }
 } else {

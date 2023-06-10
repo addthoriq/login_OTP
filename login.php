@@ -16,6 +16,13 @@ if (isset($_SESSION['email'])) {
 </head>
 
 <body>
+
+  <?php
+    if (isset($_SESSION['error'])) {
+      echo $_SESSION['error'];
+    }
+  ?>
+
   <form action="proses_login.php" method="post">
     <span id="email_error" style="color: red;"></span><br>
     <label for="email">Masukkan Email anda:</label>
@@ -59,6 +66,8 @@ if (isset($_SESSION['email'])) {
       console.log(b);
     }
   }
+
+  
 </script>
 
 </html>
