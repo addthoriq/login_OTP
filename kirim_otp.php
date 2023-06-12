@@ -13,16 +13,16 @@ $type = get_safe_value($koneksi, $_POST['tipe']);
 // var_dump($type == "'email'");
 
 if ($type == "'email'") {
-  $email = get_safe_value($koneksi, $_POST['email']);
-  $sql = "SELECT * FROM users where email_pengguna = $email";
+  $email = $_POST['email'];
+  $sql = "SELECT * FROM users where email_pengguna = '$email'";
   $check_user = $koneksi->query($sql)->rowCount();
 
   // var_dump($check_user->rowCount());
 
-  // if ($check_user > 0) {
-  //   echo "Email ga ada";
-  //   die();
-  // }
+  if ($check_user == 0) {
+    echo "email_tidak_valid";
+    die();
+  }
 
   $otp = generateOTP();
   $_SESSION['EMAIL_OTP'] = $otp;

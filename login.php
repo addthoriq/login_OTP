@@ -18,11 +18,12 @@ if (isset($_SESSION['email'])) {
 <body>
 
   <?php
-    if (isset($_SESSION['error'])) {
-      echo $_SESSION['error'];
-    }
+  if (isset($_SESSION['error'])) {
+    echo $_SESSION['error'];
+  }
   ?>
 
+  <span id="error_msg"></span>
   <form action="proses_login.php" method="post">
     <span id="email_error" style="color: red;"></span><br>
     <label for="email">Masukkan Email anda:</label>
@@ -60,14 +61,18 @@ if (isset($_SESSION['email'])) {
             jQuery('#kode_otp').show();
             jQuery('#label_otp').show();
             jQuery('#btn_submit').show();
+            jQuery('#error_msg').text('');
+            jQuery('#error_msg').hide();
+          } else if (result == 'email_tidak_valid') {
+            jQuery('#btn_kirim_otp').html('Kirim OTP');
+            jQuery('#btn_kirim_otp').attr('disabled', false);
+            jQuery('#error_msg').text('Email tidak ditemukan!');
           }
         }
       })
       console.log(b);
     }
   }
-
-  
 </script>
 
 </html>
